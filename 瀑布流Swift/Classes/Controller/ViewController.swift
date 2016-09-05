@@ -109,8 +109,9 @@ extension ViewController:WaterflowLayoutDelegate{
     func waterflowLayout(layout: WaterfallLayout, heightForItemAtIndex index: Int, itemWidth: CGFloat) -> CGFloat {
         let shop = self.shops[index]
         return itemWidth * shop.h / shop.w;
-//        return 100
     }
+    
+    
 }
 
 

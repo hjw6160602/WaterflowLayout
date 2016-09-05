@@ -8,14 +8,33 @@
 
 import UIKit
 
-
-protocol ConnectionDelegate {
-    func onResponseResult(response:NSDictionary)
-}
-
+//MARK:- 提供代理来提供一些自定义参数
 protocol WaterflowLayoutDelegate{
+    
+    /** 
+     * requried: 提供每一个cell的高度
+     */
     func waterflowLayout(layout:WaterfallLayout, heightForItemAtIndex index:Int, itemWidth:CGFloat) -> CGFloat
     
+    /**
+     * optional: 提供列数
+     */
+//    func columnCountInWaterflowLayout(waterflowLayout : WaterfallLayout) -> CGFloat
+    
+    /**
+     * optional: 提供列间距
+     */
+//    func columnMarginInWaterflowLayout(waterflowLayout : WaterfallLayout) -> CGFloat
+    
+    /**
+     * optional: 提供行间距
+     */
+//    func rowMarginInWaterflowLayout(waterflowLayout : WaterfallLayout) -> CGFloat
+    
+    /**
+     * optional: 提供edgeInsets
+     */
+//    func edgeInsetsInWaterflowLayout(waterflowLayout : WaterfallLayout) -> UIEdgeInsets
 }
 
 class WaterfallLayout: UICollectionViewLayout {
@@ -26,11 +45,11 @@ class WaterfallLayout: UICollectionViewLayout {
     /** 边缘间距 */
     lazy var edgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
     /** 默认的列数 */
-    lazy var columnCount = 3;
+    lazy var columnCount = 3
     /** 每一列之间的间距 */
-    lazy var columnMargin = 10;
+    lazy var columnMargin = 10
     /** 每一行之间的间距 */
-    lazy var rowMargin = 10;
+    lazy var rowMargin = 10
     /** cell的属性数组 */
     lazy var attrsArray:[UICollectionViewLayoutAttributes] = []
     /** cell的高度数组 */
