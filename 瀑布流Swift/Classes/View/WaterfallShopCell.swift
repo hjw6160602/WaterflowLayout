@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class WaterfallShopCell: UICollectionViewCell {
 
@@ -16,6 +17,8 @@ class WaterfallShopCell: UICollectionViewCell {
     var shop: Shop?{
         didSet{
             // 1.图片
+            let url = URL(string: shop!.img)
+            imageView.kf.setImage(with: url)
 //            imageView.sd_setImageWithURL(NSURL(string: shop!.img), placeholderImage: UIImage(named: "loading"))
             // 2.价格
             priceLabel.text = shop!.price
