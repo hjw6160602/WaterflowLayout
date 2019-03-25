@@ -11,7 +11,7 @@ import UIKit
 
 private let ReuseID = "CollectionViewCellReuseID"
 private let ShopCell = "WaterfallShopCell"
-private let path = NSBundle.mainBundle().pathForResource("Shop.plist", ofType: nil)
+private let path = Bundle.main.path(forResource: "Shop.plist", ofType: nil)
 
 class ViewController: UIViewController {
 
@@ -34,10 +34,10 @@ class ViewController: UIViewController {
         collectionView = UICollectionView(frame:view.bounds, collectionViewLayout: layout)
         
         let nib = UINib(nibName:ShopCell, bundle:nil)
-        collectionView!.registerNib(nib, forCellWithReuseIdentifier: ReuseID)
+        collectionView!.register(nib, forCellWithReuseIdentifier: ReuseID)
 
         collectionView!.dataSource = self
-        collectionView?.backgroundColor = UIColor.lightGrayColor()
+        collectionView?.backgroundColor = UIColor.lightGray
         view.addSubview(collectionView!)
     }
     
@@ -46,13 +46,12 @@ class ViewController: UIViewController {
         
         collectionView!.header.beginRefreshing()
         collectionView!.footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(ViewController.loadMoreShops))
-        collectionView!.footer.hidden = true
+        collectionView!.footer.isHidden = true
     }
     
-    func loadNewShops(){
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue()) {
-            
-            
+    @objc func loadNewShops(){
+        let time: TimeInterval = 1.0
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
             let shopsDictArray = NSArray(contentsOfFile:path!) as! [[String : AnyObject]]
             
             self.shops.removeAll()
@@ -61,15 +60,15 @@ class ViewController: UIViewController {
                 let shop = Shop(dict: dict )
                 self.shops.append(shop)
             }
-            
             // 刷新数据
             self.collectionView!.reloadData()
             self.collectionView!.header.endRefreshing()
         }
     }
     
-    func loadMoreShops(){
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)), dispatch_get_main_queue()) {
+    @objc func loadMoreShops(){
+        let time: TimeInterval = 1.0
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
             let shopsDictArray = NSArray(contentsOfFile:path!) as! [[String : AnyObject]]
             for dict in shopsDictArray {
                 let shop = Shop(dict: dict )
@@ -85,23 +84,23 @@ class ViewController: UIViewController {
 
 
 extension ViewController: UICollectionViewDataSource{
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        collectionView.footer.hidden = shops.count == 0
-        print("\(shops.count)")
-        return shops.count
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ReuseID, forIndexPath: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseID, for: indexPath as IndexPath)
             as! WaterfallShopCell
         
         cell.shop = self.shops[indexPath.item]
         
         return cell
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        collectionView.footer.isHidden = shops.count == 0
+        print("\(shops.count)")
+        return shops.count
     }
 }
 
