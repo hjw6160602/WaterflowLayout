@@ -18,7 +18,8 @@ class WaterfallShopCell: UICollectionViewCell {
         didSet{
             // 1.图片
             let url = URL(string: shop!.img)
-            imageView.kf.setImage(with: url)
+//            imageView.kf.setImage(with: url)
+            imageView.kf.setImage(with: url, placeholder: UIImage(named: "loading"))
 //            imageView.sd_setImageWithURL(NSURL(string: shop!.img), placeholderImage: UIImage(named: "loading"))
             // 2.价格
             priceLabel.text = shop!.price

@@ -10,15 +10,14 @@ import UIKit
 
 class Shop: NSObject {
 
-    var w : CGFloat = 0
-    var h : CGFloat = 0
-    var img = ""
-    var price = ""
-    
-    init(dict: [String: AnyObject])
-    {
+    @objc var w : CGFloat = 0
+    @objc var h : CGFloat = 0
+    @objc var img = ""
+    @objc var price = ""
+
+    init(dict: [String: Any]) {
         super.init()
+//        setValuesForKeys([String : Any])
         setValuesForKeys(dict)
     }
-    
 }

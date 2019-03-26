@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         view.addSubview(collectionView!)
     }
     
-    private func initRefresh(){
+    private func initRefresh() {
         collectionView!.header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(ViewController.loadNewShops))
         
         collectionView!.header.beginRefreshing()
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         collectionView!.footer.isHidden = true
     }
     
-    @objc func loadNewShops(){
+    @objc func loadNewShops() {
         let time: TimeInterval = 1.0
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
             let shopsDictArray = NSArray(contentsOfFile:path!) as! [[String : AnyObject]]
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
             self.shops.removeAll()
             
             for dict in shopsDictArray {
-                let shop = Shop(dict: dict )
+                let shop = Shop(dict: dict)
                 self.shops.append(shop)
             }
             // 刷新数据
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @objc func loadMoreShops(){
+    @objc func loadMoreShops() {
         let time: TimeInterval = 1.0
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
             let shopsDictArray = NSArray(contentsOfFile:path!) as! [[String : AnyObject]]
@@ -83,8 +83,9 @@ class ViewController: UIViewController {
 }
 
 
-extension ViewController: UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseID, for: indexPath as IndexPath)
             as! WaterfallShopCell
         
@@ -104,13 +105,11 @@ extension ViewController: UICollectionViewDataSource{
     }
 }
 
-extension ViewController:WaterflowLayoutDelegate{
+extension ViewController: WaterflowLayoutDelegate {
     func waterflowLayout(layout: WaterfallLayout, heightForItemAtIndex index: Int, itemWidth: CGFloat) -> CGFloat {
         let shop = self.shops[index]
         return itemWidth * shop.h / shop.w;
     }
-    
-    
 }
 
 
