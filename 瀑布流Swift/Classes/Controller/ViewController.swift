@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AliyunOSSiOS
+//import AliyunOSSiOS
 
 private let ReuseID = "CollectionViewCellReuseID"
 private let ShopCell = "WaterfallShopCell"
@@ -20,7 +20,7 @@ private let OSS_BUCKET_PRIVATE: String = "saidicaprio"
 class ViewController: UIViewController {
 
     var collectionView: UICollectionView?
-    var mClient: OSSClient!
+//    var mClient: OSSClient!
     
     lazy var shops:[Shop] = []
     
@@ -30,76 +30,76 @@ class ViewController: UIViewController {
         initCollectionView()
         initRefresh()
         
-        initOSSImgs()
+//        initOSSImgs()
     }
     
-    private func initOSSImgs() {
-        var mProvider = OSSStsTokenCredentialProvider(accessKeyId: "LTAIfMo9OXLcemlR", secretKeyId: "87srILQj0XKblSUtKWAaRVoFoDmutE", securityToken: "GKAC532YJ813I30Y8EaJWw69e46oBVCMHx6wE2Sh1AxWSnFVFHw2GRzbmJDcv2XN") as? OSSCredentialProvider
-
-//        let mProvider = OSSAuthCredentialProvider(authServerUrl: OSS_STSTOKEN_URL)
-        
-        mClient = OSSClient(endpoint: OSS_ENDPOINT, credentialProvider: mProvider!)
-        
-        getBucket()
-        // 可选参数，具体含义参考：https://docs.aliyun.com/#/pub/oss/api-reference/bucket&GetBucket
-        // getBucket.marker = @"";
-        // getBucket.prefix = @"";
-        // getBucket.delimiter = @"";
-        
-//        var getBucketTask: OSSTask? = mClient.getBucket(getBucket)
-//        getBucketTask?.continue(withBlock: { task in
-//            if task?.error == nil {
-//                var result: OSSGetBucketResult? = task?.result
-//                print("get bucket success!")
-//                for objectInfo in (result?.contents)! {
-//                    print("list object: \(objectInfo)")
-//                }
-//            } else {
-//                if let error = task?.error {
-//                    print("get bucket failed, error: \(error)")
-//                }
+//    private func initOSSImgs() {
+//        var mProvider = OSSStsTokenCredentialProvider(accessKeyId: "LTAIfMo9OXLcemlR", secretKeyId: "87srILQj0XKblSUtKWAaRVoFoDmutE", securityToken: "GKAC532YJ813I30Y8EaJWw69e46oBVCMHx6wE2Sh1AxWSnFVFHw2GRzbmJDcv2XN") as? OSSCredentialProvider
+//
+////        let mProvider = OSSAuthCredentialProvider(authServerUrl: OSS_STSTOKEN_URL)
+//
+//        mClient = OSSClient(endpoint: OSS_ENDPOINT, credentialProvider: mProvider!)
+//
+//        getBucket()
+//        // 可选参数，具体含义参考：https://docs.aliyun.com/#/pub/oss/api-reference/bucket&GetBucket
+//        // getBucket.marker = @"";
+//        // getBucket.prefix = @"";
+//        // getBucket.delimiter = @"";
+//
+////        var getBucketTask: OSSTask? = mClient.getBucket(getBucket)
+////        getBucketTask?.continue(withBlock: { task in
+////            if task?.error == nil {
+////                var result: OSSGetBucketResult? = task?.result
+////                print("get bucket success!")
+////                for objectInfo in (result?.contents)! {
+////                    print("list object: \(objectInfo)")
+////                }
+////            } else {
+////                if let error = task?.error {
+////                    print("get bucket failed, error: \(error)")
+////                }
+////            }
+////            return nil
+////        })
+//    }
+//
+//    private func getBucket() -> Void {
+//        let request = OSSGetBucketRequest()
+//        request.bucketName = OSS_BUCKET_PRIVATE
+//
+//        let task = mClient.getBucket(request)
+//        task.continue( { (t) -> Any? in
+//            if let result = t.result as? OSSGetBucketResult {
+//                self.showResult(task: OSSTask(result: result.contents as AnyObject))
+//            }else
+//            {
+//                self.showResult(task: t)
 //            }
 //            return nil
 //        })
-    }
-    
-    private func getBucket() -> Void {
-        let request = OSSGetBucketRequest()
-        request.bucketName = OSS_BUCKET_PRIVATE
-        
-        let task = mClient.getBucket(request)
-        task.continue( { (t) -> Any? in
-            if let result = t.result as? OSSGetBucketResult {
-                self.showResult(task: OSSTask(result: result.contents as AnyObject))
-            }else
-            {
-                self.showResult(task: t)
-            }
-            return nil
-        })
-    }
-    
-    private func showResult(task: OSSTask<AnyObject>?) -> Void {
-        if (task?.error != nil) {
-            let error: NSError = (task?.error)! as NSError
-            self.ossAlert(title: "error", message: error.description)
-        }else
-        {
-            let result = task?.result
-            self.ossAlert(title: "notice", message: result?.description)
-        }
-    }
-    
-    func ossAlert(title: String?,message:String?) -> Void {
-        DispatchQueue.main.async {
-            let alertCtrl = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-            alertCtrl.addAction(UIAlertAction(title: "confirm", style: UIAlertAction.Style.default, handler: { (action) in
-                print("\(action.title!) has been clicked");
-                alertCtrl.dismiss(animated: true, completion: nil)
-            }))
-            self.present(alertCtrl, animated: true, completion: nil)
-        }
-    }
+//    }
+//
+//    private func showResult(task: OSSTask<AnyObject>?) -> Void {
+//        if (task?.error != nil) {
+//            let error: NSError = (task?.error)! as NSError
+//            self.ossAlert(title: "error", message: error.description)
+//        }else
+//        {
+//            let result = task?.result
+//            self.ossAlert(title: "notice", message: result?.description)
+//        }
+//    }
+//
+//    func ossAlert(title: String?,message:String?) -> Void {
+//        DispatchQueue.main.async {
+//            let alertCtrl = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+//            alertCtrl.addAction(UIAlertAction(title: "confirm", style: UIAlertAction.Style.default, handler: { (action) in
+//                print("\(action.title!) has been clicked");
+//                alertCtrl.dismiss(animated: true, completion: nil)
+//            }))
+//            self.present(alertCtrl, animated: true, completion: nil)
+//        }
+//    }
     
     
     private func initCollectionView() {

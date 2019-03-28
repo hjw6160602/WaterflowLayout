@@ -1,3 +1,4 @@
     
     github "SnapKit/SnapKit"
     github "onevcat/Kingfisher"
+    #github "aliyun/aliyun-oss-ios-sdk"
