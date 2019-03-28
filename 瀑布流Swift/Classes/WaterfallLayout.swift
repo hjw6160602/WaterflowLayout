@@ -45,7 +45,7 @@ class WaterfallLayout: UICollectionViewLayout {
     /** 边缘间距 */
     lazy var edgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     /** 默认的列数 */
-    lazy var columnCount = 3
+    lazy var columnCount = 2
     /** 每一列之间的间距 */
     lazy var columnMargin = 10
     /** 每一行之间的间距 */
