@@ -6,7 +6,7 @@
 		<key>h</key>
 		<integer>275</integer>
 		<key>img</key>
-		<string>https://saidicaprio.oss-cn-shanghai.aliyuncs.com/imgs/1519984197.png</string>
+		<string>http://sai-example.oss-cn-shanghai.aliyuncs.com/gif/10086.gif</string>
 		<key>price</key>
 		<string>¥169</string>
 		<key>w</key>
@@ -16,7 +16,7 @@
 		<key>h</key>
 		<integer>300</integer>
 		<key>img</key>
-		<string>http://s6.mogujie.cn/b7/bao/130928/c7k0_kqyw6vckkfbgeq3wgfjeg5sckzsew_500x750.jpg_200x999.jpg</string>
+		<string>http://sai-example.oss-cn-shanghai.aliyuncs.com/gif/102.gif</string>
 		<key>price</key>
 		<string>¥79</string>
 		<key>w</key>

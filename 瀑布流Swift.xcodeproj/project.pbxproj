@@ -27,6 +27,7 @@
 		67AF4C0D2249068F00A53AB6 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF4BF72249068E00A53AB6 /* MJRefreshAutoFooter.m */; };
 		67AF4C0E2249068F00A53AB6 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF4BF92249068E00A53AB6 /* MJRefreshComponent.m */; };
 		67AF4C13224908B700A53AB6 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67AF4C102249084B00A53AB6 /* Kingfisher.framework */; };
+		67D62EC3224DCD1700DED6ED /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677C67F4224CCAAF00492886 /* AliyunOSSiOS.framework */; };
 		7854792D1D7539C10040CA78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785479251D7539C10040CA78 /* ViewController.swift */; };
 		7854792E1D7539C10040CA78 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785479281D7539C10040CA78 /* WaterfallLayout.swift */; };
 		7854792F1D7539C10040CA78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7854792A1D7539C10040CA78 /* AppDelegate.swift */; };
@@ -113,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67D62EC3224DCD1700DED6ED /* AliyunOSSiOS.framework in Frameworks */,
 				67AF4C13224908B700A53AB6 /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,6 +393,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AliyunOSSiOS.framework",
 			);
 			outputFileListPaths = (
 			);
