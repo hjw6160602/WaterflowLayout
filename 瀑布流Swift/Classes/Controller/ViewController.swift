@@ -17,9 +17,7 @@ private let HPPT_PREFIX = "http://"
 private let OSS_ENDPOINT = "oss-cn-shanghai.aliyuncs.com"
 private let OSS_BUCKET_NAME = "saidicaprio"
 
-private let STS_KEYID = "STS.NHBrKCRVjzWq5C3Zr8mesR1kp"
-private let STS_SECRET = "EXT11UEXtKuEjdshcxYLFD4ddTDkxfMrz38XKKDC5Cfz"
-private let STS_TOKEN = "CAIS5QF1q6Ft5B2yfSjIr4v3OfH3v4lLzZWaN2WCvnJtYepfvfTAkjz2IHhIf3NhA+sfv/Q3nWtQ7PsSlqpoQp4dtLIsuz81vPpt6gqET9frma7ctM4p6vCMHWyUFGSIvqv7aPn4S9XwY+qkb0u++AZ43br9c0fJPTXnS+rr76RqddMKRAK1QCNbDdNNXGtYpdQdKGHaOITGUHeooBKJXREx5lIn1D0isf/jnpTN0HeE0g2mkN1yjp/qP52pY/NrOJpCSNqv1IR0DPGZjHUKukIRrfYm1PUfoW2a7sv2CV5b8845/nkiCQIEGoABDpK8qM3vZjckC51sO2bop2AmcsVVt907AEpDe5zml0bHTB8NbrbaKy+jT5dHILm/0fFBXQDrZyTHAPw4Ed3baLXtDWygDXKCYyCCFKzCwvwo03j08Ecggd7Medx4tVkCOYywjOCYrHIE+fflCvcIYT+1XLQ0EeBuYLoZwlH/lh0="
+private let OSS_STSTOKEN_URL = "https://saidicaprio.xyz/osssts"
 
 class ViewController: UIViewController {
 
@@ -37,8 +35,8 @@ class ViewController: UIViewController {
     }
     
     private func initOSSImgs() {
-        let mProvider = OSSStsTokenCredentialProvider(accessKeyId: STS_KEYID, secretKeyId: STS_SECRET, securityToken: STS_TOKEN)
-        //        let mProvider = OSSAuthCredentialProvider(authServerUrl: OSS_STSTOKEN_URL)
+//        let mProvider = OSSStsTokenCredentialProvider(accessKeyId: STS_KEYID, secretKeyId: STS_SECRET, securityToken: STS_TOKEN)
+        let mProvider = OSSAuthCredentialProvider(authServerUrl: OSS_STSTOKEN_URL)
         mClient = OSSClient(endpoint: HPPT_PREFIX + OSS_ENDPOINT, credentialProvider: mProvider)
         getBucket()
     }
@@ -166,3 +164,7 @@ extension ViewController: WaterflowLayoutDelegate {
         return itemWidth * 200 / 100;
     }
 }
+
+private let STS_KEYID = "STS.NHBrKCRVjzWq5C3Zr8mesR1kp"
+private let STS_SECRET = "EXT11UEXtKuEjdshcxYLFD4ddTDkxfMrz38XKKDC5Cfz"
+private let STS_TOKEN = "CAIS5QF1q6Ft5B2yfSjIr4v3OfH3v4lLzZWaN2WCvnJtYepfvfTAkjz2IHhIf3NhA+sfv/Q3nWtQ7PsSlqpoQp4dtLIsuz81vPpt6gqET9frma7ctM4p6vCMHWyUFGSIvqv7aPn4S9XwY+qkb0u++AZ43br9c0fJPTXnS+rr76RqddMKRAK1QCNbDdNNXGtYpdQdKGHaOITGUHeooBKJXREx5lIn1D0isf/jnpTN0HeE0g2mkN1yjp/qP52pY/NrOJpCSNqv1IR0DPGZjHUKukIRrfYm1PUfoW2a7sv2CV5b8845/nkiCQIEGoABDpK8qM3vZjckC51sO2bop2AmcsVVt907AEpDe5zml0bHTB8NbrbaKy+jT5dHILm/0fFBXQDrZyTHAPw4Ed3baLXtDWygDXKCYyCCFKzCwvwo03j08Ecggd7Medx4tVkCOYywjOCYrHIE+fflCvcIYT+1XLQ0EeBuYLoZwlH/lh0="
