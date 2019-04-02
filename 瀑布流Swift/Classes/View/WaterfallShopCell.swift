@@ -18,12 +18,10 @@ class WaterfallShopCell: UICollectionViewCell {
             // 1.图片
             let url = URL(string: urlStr)
 //            imageView.kf.setImage(with: url)
-        
-            imageView.kf.setImage(with: url, placeholder: UIImage(named: "loading"))
-            
+//            imageView.kf.setImage(with: url, placeholder: UIImage(named: "loading"))
         
             let processor = DownsamplingImageProcessor(size: imageView.frame.size)
-                >> RoundCornerImageProcessor(cornerRadius: 20)
+                >> RoundCornerImageProcessor(cornerRadius: 1)
             imageView.kf.indicatorType = .activity
             imageView.kf.setImage(
                 with: url,

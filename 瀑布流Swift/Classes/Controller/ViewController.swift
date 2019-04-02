@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     }
     
     private func initOSSImgs() {
-//        let mProvider = OSSStsTokenCredentialProvider(accessKeyId: STS_KEYID, secretKeyId: STS_SECRET, securityToken: STS_TOKEN)
+//      let mProvider = OSSStsTokenCredentialProvider(accessKeyId: STS_KEYID, secretKeyId: STS_SECRET, securityToken: STS_TOKEN)
         let mProvider = OSSAuthCredentialProvider(authServerUrl: OSS_STSTOKEN_URL)
         mClient = OSSClient(endpoint: HPPT_PREFIX + OSS_ENDPOINT, credentialProvider: mProvider)
         getBucket()
@@ -74,6 +74,12 @@ class ViewController: UIViewController {
                     }
                 }
             }
+            
+            DispatchQueue.main.async {
+                self.collectionView!.reloadData()
+                self.collectionView!.header.endRefreshing()
+            }
+            
             print(self.imgs)
         }
     }
@@ -105,7 +111,6 @@ class ViewController: UIViewController {
         let time: TimeInterval = 1.0
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
 //            let shopsDictArray = NSArray(contentsOfFile:path!) as! [[String : AnyObject]]
-//
 //            self.shops.removeAll()
 //
 //            for dict in shopsDictArray {
@@ -113,8 +118,8 @@ class ViewController: UIViewController {
 //                self.shops.append(shop)
 //            }
 //            // 刷新数据
-//            self.collectionView!.reloadData()
-//            self.collectionView!.header.endRefreshing()
+            self.collectionView!.reloadData()
+            self.collectionView!.header.endRefreshing()
         }
     }
     
@@ -128,8 +133,8 @@ class ViewController: UIViewController {
 //            }
 //
 //            // 刷新数据
-//            self.collectionView!.reloadData()
-//            self.collectionView!.footer.endRefreshing()
+            self.collectionView!.reloadData()
+            self.collectionView!.footer.endRefreshing()
         }
     }
 }
@@ -141,7 +146,7 @@ extension ViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseID, for: indexPath as IndexPath)
             as! WaterfallShopCell
         cell.urlStr = self.imgs[indexPath.item]
-//        cell.shop = self.shops[indexPath.item]
+//        cell.shxop = self.shops[indexPath.item]
         
         return cell
     }
