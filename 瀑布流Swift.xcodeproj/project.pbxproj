@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		674F0DC9225368D700BB68DD /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 674F0DC8225368D700BB68DD /* AliyunOSSiOS.framework */; };
 		67AF4BFC2249068F00A53AB6 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF4BD02249068E00A53AB6 /* UIScrollView+MJRefresh.m */; };
 		67AF4BFD2249068F00A53AB6 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF4BD12249068E00A53AB6 /* MJRefreshConst.m */; };
 		67AF4BFE2249068F00A53AB6 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 67AF4BD42249068E00A53AB6 /* MJRefresh.bundle */; };
@@ -27,7 +28,6 @@
 		67AF4C0D2249068F00A53AB6 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF4BF72249068E00A53AB6 /* MJRefreshAutoFooter.m */; };
 		67AF4C0E2249068F00A53AB6 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF4BF92249068E00A53AB6 /* MJRefreshComponent.m */; };
 		67AF4C13224908B700A53AB6 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67AF4C102249084B00A53AB6 /* Kingfisher.framework */; };
-		67D62EC3224DCD1700DED6ED /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677C67F4224CCAAF00492886 /* AliyunOSSiOS.framework */; };
 		7854792D1D7539C10040CA78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785479251D7539C10040CA78 /* ViewController.swift */; };
 		7854792E1D7539C10040CA78 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785479281D7539C10040CA78 /* WaterfallLayout.swift */; };
 		7854792F1D7539C10040CA78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7854792A1D7539C10040CA78 /* AppDelegate.swift */; };
@@ -54,7 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		677C67F4224CCAAF00492886 /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AliyunOSSiOS.framework; path = Carthage/Build/iOS/AliyunOSSiOS.framework; sourceTree = "<group>"; };
+		674F0DC8225368D700BB68DD /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AliyunOSSiOS.framework; path = Carthage/Build/iOS/AliyunOSSiOS.framework; sourceTree = "<group>"; };
 		67AF4BD02249068E00A53AB6 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		67AF4BD12249068E00A53AB6 /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
 		67AF4BD22249068E00A53AB6 /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67D62EC3224DCD1700DED6ED /* AliyunOSSiOS.framework in Frameworks */,
+				674F0DC9225368D700BB68DD /* AliyunOSSiOS.framework in Frameworks */,
 				67AF4C13224908B700A53AB6 /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,7 +218,7 @@
 		67AF4C0F2249084A00A53AB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				677C67F4224CCAAF00492886 /* AliyunOSSiOS.framework */,
+				674F0DC8225368D700BB68DD /* AliyunOSSiOS.framework */,
 				67AF4C102249084B00A53AB6 /* Kingfisher.framework */,
 			);
 			name = Frameworks;

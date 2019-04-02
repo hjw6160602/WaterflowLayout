@@ -19,7 +19,7 @@ class WaterfallShopCell: UICollectionViewCell {
             let url = URL(string: urlStr)
 //            imageView.kf.setImage(with: url)
         
-//            imageView.kf.setImage(with: url, placeholder: UIImage(named: "loading"))
+            imageView.kf.setImage(with: url, placeholder: UIImage(named: "loading"))
             
         
             let processor = DownsamplingImageProcessor(size: imageView.frame.size)
