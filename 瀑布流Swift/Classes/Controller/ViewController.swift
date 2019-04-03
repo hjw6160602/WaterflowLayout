@@ -7,22 +7,15 @@
 //
 
 import UIKit
-import AliyunOSSiOS
 
 private let ReuseID = "CollectionViewCellReuseID"
 private let ShopCell = "WaterfallShopCell"
 private let path = Bundle.main.path(forResource: "Shop.plist", ofType: nil)
 
-private let HPPT_PREFIX = "http://"
-private let OSS_ENDPOINT = "oss-cn-shanghai.aliyuncs.com"
-private let OSS_BUCKET_NAME = "saidicaprio"
-
-private let OSS_STSTOKEN_URL = "https://saidicaprio.xyz/osssts/"
-
 class ViewController: UIViewController {
-
+    let userDefaults = UserDefaults.standard
     var collectionView: UICollectionView?
-    var mClient: OSSClient!
+    let ossAuth = OSSAuthSTSToken()
     
 //    lazy var shops:[Shop] = []
     lazy var imgs:[String] = []
@@ -35,52 +28,14 @@ class ViewController: UIViewController {
     }
     
     private func initOSSImgs() {
-//      let mProvider = OSSStsTokenCredentialProvider(accessKeyId: STS_KEYID, secretKeyId: STS_SECRET, securityToken: STS_TOKEN)
-        let mProvider = OSSAuthCredentialProvider(authServerUrl: OSS_STSTOKEN_URL)
-        mClient = OSSClient(endpoint: HPPT_PREFIX + OSS_ENDPOINT, credentialProvider: mProvider)
-        getBucket()
-    }
-    
-    private func getBucket() -> Void {
-        let request = OSSGetBucketRequest()
-        request.bucketName = OSS_BUCKET_NAME
-        
-        let task = mClient.getBucket(request)
-        task.continue( { (t) -> Any? in
-            if let result = t.result as? OSSGetBucketResult {
-                self.showResult(task: OSSTask(result: result.contents as AnyObject))
-            } else {
-                self.showResult(task: t)
+        if let imgs = userDefaults.array(forKey: "imgs") {
+            if imgs is [String] {
+                self.imgs = imgs as! [String]
             }
-            return nil
-        })
-    }
-    
-    private func showResult(task: OSSTask<AnyObject>?) -> Void {
-        if (task?.error != nil) {
-            let error: NSError = (task?.error)! as NSError
-            print(error.description)
         } else {
-            let result = task?.result as? NSArray
-            if let array = result {
-                for objectInfo in array {
-                    let dict = objectInfo as? NSDictionary
-                    let name = dict?["Key"] as? String
-                    if let str = name {
-                        let url = HPPT_PREFIX + OSS_BUCKET_NAME + "." + OSS_ENDPOINT + "/" + str
-                        if url.hasSuffix(".png") {
-                            self.imgs.append(url)
-                        }
-                    }
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.collectionView!.reloadData()
-                self.collectionView!.header.endRefreshing()
-            }
-            
-            print(self.imgs)
+//            let ossAuth = OSSAuthSTSToken.init(delegate: self)
+            ossAuth.delegate = self
+            ossAuth.OSSRequestSTSToken()
         }
     }
     
@@ -95,7 +50,7 @@ class ViewController: UIViewController {
         collectionView!.register(nib, forCellWithReuseIdentifier: ReuseID)
 
         collectionView!.dataSource = self
-        collectionView?.backgroundColor = UIColor.lightGray
+        collectionView?.backgroundColor = UIColor.clear
         view.addSubview(collectionView!)
     }
     
@@ -166,10 +121,19 @@ extension ViewController: WaterflowLayoutDelegate {
     func waterflowLayout(layout: WaterfallLayout, heightForItemAtIndex index: Int, itemWidth: CGFloat) -> CGFloat {
 //        let imgUrl = self.imgs[index]
 //        return itemWidth * shop.h / shop.w;
-        return itemWidth * 200 / 100;
+        return itemWidth * 100 / 100;
     }
 }
 
-private let STS_KEYID = "STS.NHBrKCRVjzWq5C3Zr8mesR1kp"
-private let STS_SECRET = "EXT11UEXtKuEjdshcxYLFD4ddTDkxfMrz38XKKDC5Cfz"
-private let STS_TOKEN = ""
+extension ViewController: OSSAuthSTSTokenDelegate {
+    func authSTSTokenFinished(_ imgs: [String]) {
+        self.imgs = imgs
+        userDefaults.set(imgs, forKey: "imgs")
+        
+        DispatchQueue.main.async {
+            self.collectionView!.reloadData()
+            self.collectionView!.header.endRefreshing()
+        }
+        print(self.imgs)
+    }
+}

@@ -18,29 +18,31 @@ class WaterfallShopCell: UICollectionViewCell {
             // 1.图片
             let url = URL(string: urlStr)
 //            imageView.kf.setImage(with: url)
-//            imageView.kf.setImage(with: url, placeholder: UIImage(named: "loading"))
+            imageView.kf.setImage(with: url, placeholder: UIImage(named: "loading"))
         
-            let processor = DownsamplingImageProcessor(size: imageView.frame.size)
-                >> RoundCornerImageProcessor(cornerRadius: 1)
-            imageView.kf.indicatorType = .activity
-            imageView.kf.setImage(
-                with: url,
-                placeholder: UIImage(named: "loading"),
-                options: [
-                    .processor(processor),
-                    .scaleFactor(UIScreen.main.scale),
-                    .transition(.fade(1)),
-                    .cacheOriginalImage
-                ])
-            {
-                result in
-                switch result {
-                case .success(let value):
-                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                case .failure(let error):
-                    print("Job failed: \(error.localizedDescription)")
-                }
-            }
+//            let processor = DownsamplingImageProcessor(size: imageView.frame.size)
+//                >> RoundCornerImageProcessor(cornerRadius: 1)
+            
+//            imageView.kf.indicatorType = .activity
+            
+//            imageView.kf.setImage(
+//                with: url,
+//                placeholder: UIImage(named: "loading"),
+//                options: [
+//                    .processor(processor),
+//                    .scaleFactor(UIScreen.main.scale),
+//                    .transition(.fade(1)),
+//                    .cacheOriginalImage
+//                ])
+//            {
+//                result in
+//                switch result {
+//                case .success(let value):
+//                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+//                case .failure(let error):
+//                    print("Job failed: \(error.localizedDescription)")
+//                }
+//            }
             // 2.价格
 //            priceLabel.text = shop!.price
         }

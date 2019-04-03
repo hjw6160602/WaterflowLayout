@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		674F0DC9225368D700BB68DD /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 674F0DC8225368D700BB68DD /* AliyunOSSiOS.framework */; };
+		67AB363622549C17002A4E3D /* OSSAuthSTSToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AB363522549C17002A4E3D /* OSSAuthSTSToken.swift */; };
 		67AF4BFC2249068F00A53AB6 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF4BD02249068E00A53AB6 /* UIScrollView+MJRefresh.m */; };
 		67AF4BFD2249068F00A53AB6 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF4BD12249068E00A53AB6 /* MJRefreshConst.m */; };
 		67AF4BFE2249068F00A53AB6 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 67AF4BD42249068E00A53AB6 /* MJRefresh.bundle */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		674F0DC8225368D700BB68DD /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AliyunOSSiOS.framework; path = Carthage/Build/iOS/AliyunOSSiOS.framework; sourceTree = "<group>"; };
+		67AB363522549C17002A4E3D /* OSSAuthSTSToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSSAuthSTSToken.swift; sourceTree = "<group>"; };
 		67AF4BD02249068E00A53AB6 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		67AF4BD12249068E00A53AB6 /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
 		67AF4BD22249068E00A53AB6 /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				785479251D7539C10040CA78 /* ViewController.swift */,
+				67AB363522549C17002A4E3D /* OSSAuthSTSToken.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 			files = (
 				67AF4C0C2249068F00A53AB6 /* MJRefreshBackFooter.m in Sources */,
 				7854792F1D7539C10040CA78 /* AppDelegate.swift in Sources */,
+				67AB363622549C17002A4E3D /* OSSAuthSTSToken.swift in Sources */,
 				67AF4C052249068F00A53AB6 /* MJRefreshAutoGifFooter.m in Sources */,
 				67AF4C022249068F00A53AB6 /* MJRefreshBackStateFooter.m in Sources */,
 				7854792D1D7539C10040CA78 /* ViewController.swift in Sources */,
