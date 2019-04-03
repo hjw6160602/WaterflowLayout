@@ -11,7 +11,7 @@ import Kingfisher
 
 private let ReuseID = "CollectionViewCellReuseID"
 private let ShopCell = "WaterfallShopCell"
-private let path = Bundle.main.path(forResource: "Shop.plist", ofType: nil)
+//private let path = Bundle.main.path(forResource: "Shop.plist", ofType: nil)
 
 class ViewController: UIViewController {
     let userDefaults = UserDefaults.standard
@@ -32,11 +32,21 @@ class ViewController: UIViewController {
         if let imgs = userDefaults.array(forKey: "imgs") {
             if imgs is [String] {
                 self.imgs = imgs as! [String]
+                let value = userDefaults.object(forKey: "images")
+                if value is NSMutableDictionary {
+                    let dict = value as! NSMutableDictionary
+                    if dict.count > 0 {
+                        self.images = dict
+                    }
+                }
                 ImageCacheManager.FindImageInCache(imgs: self.imgs, dict: self.images)
             }
         } else {
-//            let ossAuth = OSSAuthSTSToken.init(delegate: self)
             ossAuth.delegate = self
+//            ossAuth.bucketName = "saidicaprio"
+//            ossAuth.extType = ".png"
+            ossAuth.bucketName = "sai-example"
+            ossAuth.extType = ".gif"
             ossAuth.OSSRequestSTSToken()
         }
     }
@@ -52,19 +62,20 @@ class ViewController: UIViewController {
         collectionView!.register(nib, forCellWithReuseIdentifier: ReuseID)
 
         collectionView!.dataSource = self
-        collectionView?.backgroundColor = UIColor.clear
+        collectionView!.delegate = self
+        collectionView!.backgroundColor = UIColor.clear
         view.addSubview(collectionView!)
     }
     
     private func initRefresh() {
-        collectionView!.header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(ViewController.loadNewShops))
+        collectionView!.header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(ViewController.loadNewItems))
         
         collectionView!.header.beginRefreshing()
-        collectionView!.footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(ViewController.loadMoreShops))
+        collectionView!.footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(ViewController.loadMoreItems))
         collectionView!.footer.isHidden = true
     }
     
-    @objc func loadNewShops() {
+    @objc func loadNewItems() {
         let time: TimeInterval = 1.0
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
 //            let shopsDictArray = NSArray(contentsOfFile:path!) as! [[String : AnyObject]]
@@ -80,7 +91,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @objc func loadMoreShops() {
+    @objc func loadMoreItems() {
         let time: TimeInterval = 1.0
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
 //            let shopsDictArray = NSArray(contentsOfFile:path!) as! [[String : AnyObject]]
@@ -110,19 +121,43 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if self.images.count > 0 {
+            userDefaults.setValue(self.images, forKey: "images")
+        }
         collectionView.footer.isHidden = imgs.count == 0
-//        print("\(imgs.count)")
         return imgs.count
     }
+
 }
 
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let urlStr = imgs[indexPath.item]
+        if let url = URL(string: urlStr) {
+            KingfisherManager.shared.retrieveImage(with: url) { result in
+                switch result {
+                case .success(let value):
+                    let masterViewController: PictureMasterViewController = PictureMasterViewController(nibName: "PictureMasterViewController", bundle: nil)
+                    masterViewController.showImage(value.image, in:self)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+        //            Initialized with custom gestures enabled
+        //                masterViewController.showImage(pictureMasterImageView.image!, in: self, with: [.Rotate, .Zoom, .Drag])
+        //            Initialized with no gestures enabled
+        //                masterViewController.showImage(pictureMasterImageView.image!, in: self, with: nil)
+        //            Initialized with all gestures enabled
+    }
+}
 extension ViewController: WaterflowLayoutDelegate {
     func waterflowLayout(layout: WaterfallLayout, heightForItemAtIndex index: Int, itemWidth: CGFloat) -> CGFloat {
         let url = imgs[index]
-        if let image = images.object(forKey: url) {
-            if image is OSSImage {
-                let item = image as! OSSImage
-                return itemWidth * item.h / item.w;
+        if let item = images.object(forKey: url) {
+            if item is CGFloat {
+                let aspectRatio = item as! CGFloat
+                return itemWidth * aspectRatio;
             }
         }
         return itemWidth * 120 / 100;
@@ -134,10 +169,5 @@ extension ViewController: OSSAuthSTSTokenDelegate {
         self.imgs = imgs
         userDefaults.set(imgs, forKey: "imgs")
         ImageCacheManager.FindImageInCache(imgs: self.imgs, dict: self.images)
-//        DispatchQueue.main.async {
-//            self.collectionView!.reloadData()
-//            self.collectionView!.header.endRefreshing()
-//        }
-//        print(self.imgs)
     }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		672FF43A2254DC1500156D33 /* PictureMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 672FF4372254DC1500156D33 /* PictureMasterViewController.xib */; };
+		672FF43B2254DC1500156D33 /* PictureMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672FF4382254DC1500156D33 /* PictureMasterViewController.swift */; };
+		672FF43C2254DC1500156D33 /* PictureMasterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672FF4392254DC1500156D33 /* PictureMasterImageView.swift */; };
 		674F0DC9225368D700BB68DD /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 674F0DC8225368D700BB68DD /* AliyunOSSiOS.framework */; };
 		67AF4BFC2249068F00A53AB6 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF4BD02249068E00A53AB6 /* UIScrollView+MJRefresh.m */; };
 		67AF4BFD2249068F00A53AB6 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF4BD12249068E00A53AB6 /* MJRefreshConst.m */; };
@@ -57,6 +60,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		672FF4372254DC1500156D33 /* PictureMasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PictureMasterViewController.xib; sourceTree = "<group>"; };
+		672FF4382254DC1500156D33 /* PictureMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureMasterViewController.swift; sourceTree = "<group>"; };
+		672FF4392254DC1500156D33 /* PictureMasterImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureMasterImageView.swift; sourceTree = "<group>"; };
 		674F0DC8225368D700BB68DD /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AliyunOSSiOS.framework; path = Carthage/Build/iOS/AliyunOSSiOS.framework; sourceTree = "<group>"; };
 		67AF4BD02249068E00A53AB6 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		67AF4BD12249068E00A53AB6 /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
@@ -128,6 +134,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		672FF4362254DC1500156D33 /* PictureMasterView */ = {
+			isa = PBXGroup;
+			children = (
+				672FF4372254DC1500156D33 /* PictureMasterViewController.xib */,
+				672FF4382254DC1500156D33 /* PictureMasterViewController.swift */,
+				672FF4392254DC1500156D33 /* PictureMasterImageView.swift */,
+			);
+			path = PictureMasterView;
+			sourceTree = "<group>";
+		};
 		67AF4BCF2249068E00A53AB6 /* MJRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +258,7 @@
 		785479231D7539C10040CA78 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				672FF4362254DC1500156D33 /* PictureMasterView */,
 				67B7573F2254B20000468A5A /* Utils */,
 				785479271D7539C10040CA78 /* View */,
 				785479261D7539C10040CA78 /* Model */,
@@ -394,6 +411,7 @@
 				67AF4BFE2249068F00A53AB6 /* MJRefresh.bundle in Resources */,
 				788FA4D71D7016240059B8EE /* Assets.xcassets in Resources */,
 				785479301D7539C10040CA78 /* Shop.plist in Resources */,
+				672FF43A2254DC1500156D33 /* PictureMasterViewController.xib in Resources */,
 				788FA4D51D7016230059B8EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,6 +458,7 @@
 				67AF4C002249068F00A53AB6 /* UIView+MJExtension.m in Sources */,
 				67AF4C0D2249068F00A53AB6 /* MJRefreshAutoFooter.m in Sources */,
 				67AF4BFF2249068F00A53AB6 /* UIScrollView+MJExtension.m in Sources */,
+				672FF43B2254DC1500156D33 /* PictureMasterViewController.swift in Sources */,
 				67B7573C2254AD5F00468A5A /* OSSImage.swift in Sources */,
 				67AF4C042249068F00A53AB6 /* MJRefreshAutoStateFooter.m in Sources */,
 				67AF4C072249068F00A53AB6 /* MJRefreshNormalHeader.m in Sources */,
@@ -451,6 +470,7 @@
 				67AF4C032249068F00A53AB6 /* MJRefreshBackNormalFooter.m in Sources */,
 				785479D31D7570110040CA78 /* WaterfallShopCell.swift in Sources */,
 				67AF4C082249068F00A53AB6 /* MJRefreshStateHeader.m in Sources */,
+				672FF43C2254DC1500156D33 /* PictureMasterImageView.swift in Sources */,
 				785479361D753B510040CA78 /* Shop.swift in Sources */,
 				67B757412254B20000468A5A /* OSSAuthSTSToken.swift in Sources */,
 			);

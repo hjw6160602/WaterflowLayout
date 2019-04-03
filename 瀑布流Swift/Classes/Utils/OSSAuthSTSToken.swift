@@ -9,11 +9,9 @@
 import UIKit
 import AliyunOSSiOS
 
-private let HPPT_PREFIX = "http://"
-private let OSS_ENDPOINT = "oss-cn-shanghai.aliyuncs.com"
-private let OSS_BUCKET_NAME = "saidicaprio"
-
-private let OSS_STSTOKEN_URL = "https://saidicaprio.xyz/osssts/"
+fileprivate let HPPT_PREFIX = "http://"
+fileprivate let OSS_ENDPOINT = "oss-cn-shanghai.aliyuncs.com"
+fileprivate let OSS_STSTOKEN_URL = "https://saidicaprio.xyz/osssts/"
 
 protocol OSSAuthSTSTokenDelegate {
     func authSTSTokenFinished(_ imgs:[String])
@@ -21,7 +19,12 @@ protocol OSSAuthSTSTokenDelegate {
 
 class OSSAuthSTSToken: NSObject {
     var delegate:OSSAuthSTSTokenDelegate?
+    var bucketName = ""
+    var extType = ""
+    
+    // client 要当成属性 否则会报错
     var mClient: OSSClient!
+    
     override init() {
         super.init()
     }
@@ -40,7 +43,7 @@ class OSSAuthSTSToken: NSObject {
     
     private func getBucket() -> Void {
         let request = OSSGetBucketRequest()
-        request.bucketName = OSS_BUCKET_NAME
+        request.bucketName = bucketName
         let task = mClient.getBucket(request)
         task.continue( { (t) -> Any? in
             if let result = t.result as? OSSGetBucketResult {
@@ -64,8 +67,8 @@ class OSSAuthSTSToken: NSObject {
                     let dict = objectInfo as? NSDictionary
                     let name = dict?["Key"] as? String
                     if let str = name {
-                        let url = HPPT_PREFIX + OSS_BUCKET_NAME + "." + OSS_ENDPOINT + "/" + str
-                        if url.hasSuffix(".png") {
+                        let url = HPPT_PREFIX + bucketName + "." + OSS_ENDPOINT + "/" + str
+                        if url.hasSuffix(extType) {
                             imgs.append(url)
                         }
                     }
@@ -76,6 +79,6 @@ class OSSAuthSTSToken: NSObject {
     }
 }
 
-private let STS_KEYID = "STS.NHBrKCRVjzWq5C3Zr8mesR1kp"
-private let STS_SECRET = "EXT11UEXtKuEjdshcxYLFD4ddTDkxfMrz38XKKDC5Cfz"
-private let STS_TOKEN = ""
+fileprivate let STS_KEYID = "STS.NHBrKCRVjzWq5C3Zr8mesR1kp"
+fileprivate let STS_SECRET = "EXT11UEXtKuEjdshcxYLFD4ddTDkxfMrz38XKKDC5Cfz"
+fileprivate let STS_TOKEN = ""

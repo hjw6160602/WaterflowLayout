@@ -12,35 +12,22 @@ import Kingfisher
 struct ImageCacheManager {
     
     static func FindImageInCache(imgs: [String], dict: NSMutableDictionary) {
-        for item in imgs {
-            if let url = URL(string: item) {
+        for urlStr in imgs {
+            if dict[urlStr] != nil {
+                break
+            }
+            if let url = URL(string: urlStr) {
                 KingfisherManager.shared.retrieveImage(with: url) { result in
                     switch result {
                     case .success(let value):
                         switch value.cacheType {
                         case .none:
-                            let downloader = ImageDownloader.default
-                            downloader.downloadImage(with: url) { result in
-                                switch result {
-                                case .success(let value):
-                                    let size = value.image.size
-                                    let image = OSSImage()
-                                    image.w = size.width
-                                    image.h = size.height
-                                    dict.setValue(image, forKey: item)
-                                case .failure(let error):
-                                    print(error)
-                                }
-                            }
+                            self.DownloadImage(urlStr: urlStr, dict: dict)
                         default:
                             let size = value.image.size
-                            let image = OSSImage()
-                            image.w = size.width
-                            image.h = size.height
-                            dict.setValue(image, forKey: item)
-                            print(image)
+                            let aspectRatio = size.height / size.width
+                            dict.setValue(aspectRatio, forKey: urlStr)
                         }
-                        
                     case .failure(let error):
                         print(error)
                     }
@@ -48,4 +35,24 @@ struct ImageCacheManager {
             }
         }
     }
+    
+    static func DownloadImage(urlStr: String, dict: NSMutableDictionary) {
+        if dict[urlStr] != nil {
+            return
+        }
+        if let url = URL(string: urlStr) {
+            let downloader = ImageDownloader.default
+            downloader.downloadImage(with: url) { result in
+                switch result {
+                case .success(let value):
+                    let size = value.image.size
+                    let aspectRatio = size.height / size.width
+                    dict.setValue(aspectRatio, forKey: urlStr)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+
 }

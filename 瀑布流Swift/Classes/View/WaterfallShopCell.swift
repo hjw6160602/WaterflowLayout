@@ -17,23 +17,8 @@ class WaterfallShopCell: UICollectionViewCell {
             // 1.图片
             imageView.kf.indicatorType = .activity
             
-            imageView.kf.setImage(
-                with: url,
-                placeholder: UIImage(named: "loading"),
-                options: [
-                    .scaleFactor(UIScreen.main.scale),
-                    .transition(.fade(1)),
-                    .cacheOriginalImage
-                ])
-            {
-                result in
-                switch result {
-                case .success(let value):
-                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                case .failure(let error):
-                    print("Job failed: \(error.localizedDescription)")
-                }
-            }
+            imageView.kf.setImage(with: url)
+            
             // 2.价格
 //            priceLabel.text = shop!.price
         }

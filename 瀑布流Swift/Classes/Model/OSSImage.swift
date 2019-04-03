@@ -8,13 +8,13 @@
 
 import UIKit
 
-class OSSImage: NSObject {
-    @objc var w : CGFloat = 0
-    @objc var h : CGFloat = 0
-    @objc var url = ""
-    
+//class OSSImage: NSObject {
+//    @objc var w : CGFloat = 0
+//    @objc var h : CGFloat = 0
+//    @objc var url = ""
+
 //    init(dict: [String: Any]) {
 //        super.init()
 //        setValuesForKeys(dict)
 //    }
-}
+//}
