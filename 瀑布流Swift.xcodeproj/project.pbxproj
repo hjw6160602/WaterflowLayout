@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		674F0DC9225368D700BB68DD /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 674F0DC8225368D700BB68DD /* AliyunOSSiOS.framework */; };
-		67AB363622549C17002A4E3D /* OSSAuthSTSToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AB363522549C17002A4E3D /* OSSAuthSTSToken.swift */; };
 		67AF4BFC2249068F00A53AB6 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF4BD02249068E00A53AB6 /* UIScrollView+MJRefresh.m */; };
 		67AF4BFD2249068F00A53AB6 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF4BD12249068E00A53AB6 /* MJRefreshConst.m */; };
 		67AF4BFE2249068F00A53AB6 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 67AF4BD42249068E00A53AB6 /* MJRefresh.bundle */; };
@@ -29,6 +28,9 @@
 		67AF4C0D2249068F00A53AB6 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF4BF72249068E00A53AB6 /* MJRefreshAutoFooter.m */; };
 		67AF4C0E2249068F00A53AB6 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF4BF92249068E00A53AB6 /* MJRefreshComponent.m */; };
 		67AF4C13224908B700A53AB6 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67AF4C102249084B00A53AB6 /* Kingfisher.framework */; };
+		67B7573C2254AD5F00468A5A /* OSSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B7573B2254AD5F00468A5A /* OSSImage.swift */; };
+		67B757412254B20000468A5A /* OSSAuthSTSToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B757402254B20000468A5A /* OSSAuthSTSToken.swift */; };
+		67B757432254B21C00468A5A /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B757422254B21C00468A5A /* ImageCacheManager.swift */; };
 		7854792D1D7539C10040CA78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785479251D7539C10040CA78 /* ViewController.swift */; };
 		7854792E1D7539C10040CA78 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785479281D7539C10040CA78 /* WaterfallLayout.swift */; };
 		7854792F1D7539C10040CA78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7854792A1D7539C10040CA78 /* AppDelegate.swift */; };
@@ -56,7 +58,6 @@
 
 /* Begin PBXFileReference section */
 		674F0DC8225368D700BB68DD /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AliyunOSSiOS.framework; path = Carthage/Build/iOS/AliyunOSSiOS.framework; sourceTree = "<group>"; };
-		67AB363522549C17002A4E3D /* OSSAuthSTSToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSSAuthSTSToken.swift; sourceTree = "<group>"; };
 		67AF4BD02249068E00A53AB6 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		67AF4BD12249068E00A53AB6 /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
 		67AF4BD22249068E00A53AB6 /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
@@ -96,6 +97,9 @@
 		67AF4BFA2249068E00A53AB6 /* MJRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooter.h; sourceTree = "<group>"; };
 		67AF4BFB2249068E00A53AB6 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
 		67AF4C102249084B00A53AB6 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		67B7573B2254AD5F00468A5A /* OSSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSSImage.swift; sourceTree = "<group>"; };
+		67B757402254B20000468A5A /* OSSAuthSTSToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSSAuthSTSToken.swift; sourceTree = "<group>"; };
+		67B757422254B21C00468A5A /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		785479251D7539C10040CA78 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		785479281D7539C10040CA78 /* WaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
 		7854792A1D7539C10040CA78 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -226,9 +230,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		67B7573F2254B20000468A5A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				67B757402254B20000468A5A /* OSSAuthSTSToken.swift */,
+				67B757422254B21C00468A5A /* ImageCacheManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		785479231D7539C10040CA78 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				67B7573F2254B20000468A5A /* Utils */,
 				785479271D7539C10040CA78 /* View */,
 				785479261D7539C10040CA78 /* Model */,
 				785479241D7539C10040CA78 /* Controller */,
@@ -241,7 +255,6 @@
 			isa = PBXGroup;
 			children = (
 				785479251D7539C10040CA78 /* ViewController.swift */,
-				67AB363522549C17002A4E3D /* OSSAuthSTSToken.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -250,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				785479351D753B510040CA78 /* Shop.swift */,
+				67B7573B2254AD5F00468A5A /* OSSImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -415,7 +429,6 @@
 			files = (
 				67AF4C0C2249068F00A53AB6 /* MJRefreshBackFooter.m in Sources */,
 				7854792F1D7539C10040CA78 /* AppDelegate.swift in Sources */,
-				67AB363622549C17002A4E3D /* OSSAuthSTSToken.swift in Sources */,
 				67AF4C052249068F00A53AB6 /* MJRefreshAutoGifFooter.m in Sources */,
 				67AF4C022249068F00A53AB6 /* MJRefreshBackStateFooter.m in Sources */,
 				7854792D1D7539C10040CA78 /* ViewController.swift in Sources */,
@@ -427,16 +440,19 @@
 				67AF4C002249068F00A53AB6 /* UIView+MJExtension.m in Sources */,
 				67AF4C0D2249068F00A53AB6 /* MJRefreshAutoFooter.m in Sources */,
 				67AF4BFF2249068F00A53AB6 /* UIScrollView+MJExtension.m in Sources */,
+				67B7573C2254AD5F00468A5A /* OSSImage.swift in Sources */,
 				67AF4C042249068F00A53AB6 /* MJRefreshAutoStateFooter.m in Sources */,
 				67AF4C072249068F00A53AB6 /* MJRefreshNormalHeader.m in Sources */,
 				7854792E1D7539C10040CA78 /* WaterfallLayout.swift in Sources */,
 				67AF4C0A2249068F00A53AB6 /* MJRefreshFooter.m in Sources */,
+				67B757432254B21C00468A5A /* ImageCacheManager.swift in Sources */,
 				67AF4C062249068F00A53AB6 /* MJRefreshAutoNormalFooter.m in Sources */,
 				67AF4C0B2249068F00A53AB6 /* MJRefreshHeader.m in Sources */,
 				67AF4C032249068F00A53AB6 /* MJRefreshBackNormalFooter.m in Sources */,
 				785479D31D7570110040CA78 /* WaterfallShopCell.swift in Sources */,
 				67AF4C082249068F00A53AB6 /* MJRefreshStateHeader.m in Sources */,
 				785479361D753B510040CA78 /* Shop.swift in Sources */,
+				67B757412254B20000468A5A /* OSSAuthSTSToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 private let ReuseID = "CollectionViewCellReuseID"
 private let ShopCell = "WaterfallShopCell"
@@ -17,8 +18,8 @@ class ViewController: UIViewController {
     var collectionView: UICollectionView?
     let ossAuth = OSSAuthSTSToken()
     
-//    lazy var shops:[Shop] = []
     lazy var imgs:[String] = []
+    var images = NSMutableDictionary()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class ViewController: UIViewController {
         if let imgs = userDefaults.array(forKey: "imgs") {
             if imgs is [String] {
                 self.imgs = imgs as! [String]
+                ImageCacheManager.FindImageInCache(imgs: self.imgs, dict: self.images)
             }
         } else {
 //            let ossAuth = OSSAuthSTSToken.init(delegate: self)
@@ -94,15 +96,12 @@ class ViewController: UIViewController {
     }
 }
 
-
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseID, for: indexPath as IndexPath)
             as! WaterfallShopCell
-        cell.urlStr = self.imgs[indexPath.item]
-//        cell.shxop = self.shops[indexPath.item]
-        
+        cell.urlStr = imgs[indexPath.item]
         return cell
     }
     
@@ -119,9 +118,14 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: WaterflowLayoutDelegate {
     func waterflowLayout(layout: WaterfallLayout, heightForItemAtIndex index: Int, itemWidth: CGFloat) -> CGFloat {
-//        let imgUrl = self.imgs[index]
-//        return itemWidth * shop.h / shop.w;
-        return itemWidth * 100 / 100;
+        let url = imgs[index]
+        if let image = images.object(forKey: url) {
+            if image is OSSImage {
+                let item = image as! OSSImage
+                return itemWidth * item.h / item.w;
+            }
+        }
+        return itemWidth * 120 / 100;
     }
 }
 
@@ -129,11 +133,11 @@ extension ViewController: OSSAuthSTSTokenDelegate {
     func authSTSTokenFinished(_ imgs: [String]) {
         self.imgs = imgs
         userDefaults.set(imgs, forKey: "imgs")
-        
-        DispatchQueue.main.async {
-            self.collectionView!.reloadData()
-            self.collectionView!.header.endRefreshing()
-        }
-        print(self.imgs)
+        ImageCacheManager.FindImageInCache(imgs: self.imgs, dict: self.images)
+//        DispatchQueue.main.async {
+//            self.collectionView!.reloadData()
+//            self.collectionView!.header.endRefreshing()
+//        }
+//        print(self.imgs)
     }
 }
